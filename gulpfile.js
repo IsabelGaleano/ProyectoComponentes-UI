@@ -8,9 +8,9 @@ var open = require('gulp-open');
 var Paths = {
   HERE: './',
   DIST: 'dist/',
-  CSS: '../assets/assetsLanding/css/',
-  SCSS_TOOLKIT_SOURCES: '../assets/assetsLanding/scss/soft-design-system.scss',
-  SCSS: '../assets/assetsLanding/scss/**/**'
+  CSS: './assets/assetsLanding/css/',
+  SCSS_TOOLKIT_SOURCES: './assets/assetsLanding/scss/soft-design-system.scss',
+  SCSS: './assets/assetsLanding/scss/**/**'
 };
 
 gulp.task('compile-scss', function() {
@@ -27,7 +27,7 @@ gulp.task('watch', function() {
 });
 
 gulp.task('open', function() {
-  gulp.src('pages/about-us.html')
+  gulp.src('./pages/about-us.html')
     .pipe(open());
 });
 
