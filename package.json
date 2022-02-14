@@ -2,13 +2,13 @@
   "name": "soft-ui-design-system",
   "version": "1.0.5",
   "description": "Freebie Design System for Bootstrap 5",
-  "main": "pages/about-us.html",
+  "main": "server.js",
   "directories": {
     "example": "root"
   },
   "scripts": {
     "open-app": "gulp open-app",
-    "start": "npm run open-app",
+    "start": "node server.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "watch": "gulp-watch"
   },
@@ -45,5 +45,8 @@
     "gulp-sass": "^5.1.0",
     "gulp-sourcemaps": "^2.6.5"
   },
-  "homepage": "http://creative-tim.com/product/soft-ui-design-system"
+  "homepage": "http://creative-tim.com/product/soft-ui-design-system",
+  "dependencies": {
+    "express": "^4.17.2"
+  }
 }
