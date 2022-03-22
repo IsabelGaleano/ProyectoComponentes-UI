@@ -68,3 +68,46 @@ const cargarViajes = () => {
             }
         )
 }
+
+const registrarViaje = () => {
+    var data = {
+        correoElectronico : "gato1@gmail.com",
+        nombre : "Isa",
+        apellido1 : "Galeano",
+        apellido2 : "Hernandez",
+        contrasenna : "gato123",
+        telefono : "+50684511935",
+        estado : "inactivo"
+    }
+
+    fetch("http://tripnaryserver-env.eba-eqs8mgem.us-east-1.elasticbeanstalk.com/usuarioDef/",{
+        method: 'POST',
+        body: JSON.stringify(data),
+        headers: { 
+            'Access-Control-Allow-Origin': '*',
+            'Content-type': 'application/json' 
+        }
+    })
+    .then(
+        response => {
+            if(response.ok) {
+                console.log('Usuario creado');
+                
+
+            } else {
+                console.log('El usuario ya existe');
+                
+            }
+            
+            
+            return response.json();
+        }
+    )
+    .then(
+        json => {
+
+
+            console.log(json);
+        }
+    )
+}
