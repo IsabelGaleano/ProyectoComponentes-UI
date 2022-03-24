@@ -10,18 +10,32 @@ const verificarCodigo = () => {
             'Content-type': 'application/json'
         }
     })
-        .then(
-            json => {
-                for (var i = 0; i < Object.keys(json).length; i++){
-                    if (codigoIngresado == json[i].codigo && json[i].estado == 'activo'){
-                        console.log("Codio encontrado");
-                        // activarUsuarios(correo);
-                        // desactivarCodigo(json[i]);
-                    }
+    .then(
+        response => {
+            if(response.ok) {
+                console.log('Códigos encontrados');
+
+            } else {
+                console.log('El usuario no existe');
+                
+            }
+            
+            
+            return response.json();
+        }
+    )
+    .then(
+        json => {
+            for (var i = 0; i < Object.keys(json).length; i++){
+                if (codigoIngresado == json[i].codigo && json[i].estado == 'activo'){
+                    desactivarCodigo(json[i]);
+                    activarUsuarios(correo);
                 }
             }
-        )
+        }
+    )    
 }
+
 const desactivarCodigo = (codigo) => {
 
     var data = {
@@ -42,11 +56,11 @@ const desactivarCodigo = (codigo) => {
     .then(
         response => {
             if(response.ok) {
-                console.log('Usuario actualizado');
+                console.log('Código actualizado');
                 
 
             } else {
-                console.log('El usuario no existe');
+                console.log('El código no existe');
                 
             }
             
@@ -62,8 +76,9 @@ const desactivarCodigo = (codigo) => {
         }
     )
 }
+
 const activarUsuarios = (correo) => {
-    fetch('http://tripnaryserver-env.eba-eqs8mgem.us-east-1.elasticbeanstalk.com/usuarioDef/${"gato1@gmail.com"}', {
+    fetch('http://tripnaryserver-env.eba-eqs8mgem.us-east-1.elasticbeanstalk.com/usuarioDef/' + correo, {
         mode: "cors",
         headers: {
             'Access-Control-Allow-Origin': '*',
@@ -86,61 +101,53 @@ const activarUsuarios = (correo) => {
     )
     .then(
         json => {
-
-
-            console.log(json);
-        }
-    )
-    var data = {
-        correoElectronico : "gato1@gmail.com",
-        nombre : "Isa",
-        apellido1 : "Update",
-        apellido2 : "Hernandez",
-        contrasenna : "gato123",
-        telefono : "+50684511935",
-        estado : "inactivo"
-    }
-
-    fetch("http://tripnaryserver-env.eba-eqs8mgem.us-east-1.elasticbeanstalk.com/usuarioDef/",{
-        method: 'PUT',
-        body: JSON.stringify(data),
-        headers: { 
-            'Access-Control-Allow-Origin': '*',
-            'Content-type': 'application/json' 
-        }
-    })
-    .then(
-        response => {
-            if(response.ok) {
-                console.log('Usuario actualizado');
-                
-
-            } else {
-                console.log('El usuario no existe');
-                
+            var data = {
+                correoElectronico : correo,
+                nombre : json.nombre,
+                apellido1 : json.apellido1,
+                apellido2 : json.apellido2,
+                contrasenna : json.contrasenna,
+                telefono : json.telefono,
+                estado : "activo"
             }
-            
-            
-            return response.json();
+        
+            fetch("http://tripnaryserver-env.eba-eqs8mgem.us-east-1.elasticbeanstalk.com/usuarioDef/",{
+                method: 'PUT',
+                body: JSON.stringify(data),
+                headers: { 
+                    'Access-Control-Allow-Origin': '*',
+                    'Content-type': 'application/json' 
+                }
+            })
+            .then(
+                response => {
+                    if(response.ok) {
+                        console.log('Usuario actualizado');
+                        document.getElementById('success_msg').innerText = "Registro Terminado! Redirigiendose a Iniciar Sesión";
+                        document.getElementById('success_msg').style.display = "block";
+                        setTimeout(function () {
+                            window.location.href = "../pages/sign-in.html";
+                        }, 3000);
+        
+                    } else {
+                        console.log('El usuario no existe');
+                        
+                    }
+                    
+                    
+                    return response.json();
+                }
+            )
+            .then(
+                json => {
+                    console.log(json);
+                }
+            )
         }
     )
-    .then(
-        json => {
-
-
-            console.log(json);
-        }
-    )
+    
 }
 
-function generateOTP() {
-    var digitos = '0123456789';
-    let OTP = '';
-    for (let i = 0; i < 4; i++ ) {
-        OTP += digitos[Math.floor(Math.random() * 10)];
-    }
-    return OTP;
-}
 const reenviarCodigo = () => {
     var data = {
         idCodigo: "0",
@@ -173,4 +180,13 @@ const reenviarCodigo = () => {
             }
         }
     )
+}
+
+function generateOTP() {
+    var digitos = '0123456789';
+    let OTP = '';
+    for (let i = 0; i < 4; i++ ) {
+        OTP += digitos[Math.floor(Math.random() * 10)];
+    }
+    return OTP;
 }
