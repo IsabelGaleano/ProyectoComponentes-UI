@@ -68,14 +68,15 @@
             <div class="card-body">
               <form role="form text-left">
                 <div class="mb-3">
-                  <input type="text" class="form-control" placeholder="Código" aria-label="Codigo"
+                  <input type="text" id="codigoIngresado" class="form-control" placeholder="Código" aria-label="Codigo"
                     aria-describedby="email-addon">
                 </div>
                 <div class="text-center">
-                  <button type="button" style="background-color: #5086FF;"
-                    class="btn bg-gradient-info w-100 my-4 mb-2">Verificar</button>
+                  <button type="button" style="background-color: #5086FF;" class="btn bg-gradient-info w-100 my-4 mb-2"
+                    onclick="verificarCodigo()">Verificar</button>
                 </div>
-                <a href="#" class="text-dark font-weight-bolder">Reenviar código</a>
+                <a href="#" class="text-dark font-weight-bolder" onclick="reenviarCodigo()">Reenviar código</a>
+                <p class="text-sm mt-3 mb-0" id="success_msg">Código reenviado!</p>
               </form>
             </div>
           </div>
@@ -98,6 +99,7 @@
 
   <!-- -------- END FOOTER 3 w/ COMPANY DESCRIPTION WITH LINKS & SOCIAL ICONS & COPYRIGHT ------- -->
   <!--   Core JS Files   -->
+  <script src="../scripts/verificar_codigo.js"></script>
   <script src="../assets/assetsDashboard/js/core/popper.min.js"></script>
   <script src="../assets/assetsDashboard/js/core/bootstrap.min.js"></script>
   <script src="../assets/assetsDashboard/js/plugins/perfect-scrollbar.min.js"></script>
