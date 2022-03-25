@@ -47,7 +47,6 @@
   },
   "homepage": "http://creative-tim.com/product/soft-ui-design-system",
   "dependencies": {
-    "bcrypt": "^5.0.1",
     "express": "^4.17.2"
   }
 }
