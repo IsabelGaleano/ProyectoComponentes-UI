@@ -8,6 +8,14 @@ document.addEventListener('DOMContentLoaded', async () => {
     await cargarViaje(data);
     await cargarDias(data);
 
+    document.querySelectorAll('.addLugar').forEach(item => {
+
+        item.addEventListener('click', event => {
+            document.getElementById("idViajeHidden").value = item.id;
+
+        })
+    });
+
 
 }, false);
 
@@ -91,8 +99,8 @@ const cargarDias = (idViaje) => {
                                 <a class="btn btn-link text-dark px-3 mb-0" href="javascript:;"><i
                                         class="fas fa-pencil-alt text-dark me-2"
                                         aria-hidden="true"></i>Editar</a>
-                                <a class="btn btn-link text-dark px-3 mb-0" href="javascript:;"><i class="fas fa-plus text-dark me-2 addLugar" 
-                                    id="${dias[i].id_dia}">
+                                <a class="btn btn-link text-dark px-3 mb-0 addLugar" id="${dias[i].id_dia}" href="javascript:;" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                                <i class="fas fa-plus text-dark me-2">
                                 </i>Agregar</a>
                             </div>
                         </li>`;
@@ -166,6 +174,15 @@ document.getElementById('registrarDia').addEventListener("click", function () {
 
 });
 
+document.getElementById('registrarLugar').addEventListener("click", function () {
+    let idDia = document.getElementById("idViajeHidden").value;
+    let nombre = document.getElementById('nombreLugarR').value;
+    let hora = document.getElementById('horaRlugar').value;
+    registrarLugar(idDia, nombre, hora);
+   
+
+});
+
 
 const registrarDia = (idViaje) => {
     var data = {
@@ -206,19 +223,21 @@ const registrarDia = (idViaje) => {
             json => {
 
                 console.log(json);
-                registrarLugar(json.id_dia);
+                let nombre = document.getElementById('nombreLugar').value;
+                let hora = document.getElementById('horaLugar').value;
+                registrarLugar(json.id_dia, nombre, hora);
 
             }
         )
 
 }
 
-const registrarLugar = (idDia) => {
+const registrarLugar = (idDia, vnombre, vhora) => {
     var data = {
         id_lugar: "0",
-        nombre: document.getElementById('nombreLugar').value,
-        hora: document.getElementById('horaLugar').value,
-        estado: "Sin comentarios",
+        nombre: vnombre,
+        hora: vhora,
+        comentarios: "Sin comentarios",
         id_dia: idDia,
         estado: "activo"
     }
@@ -250,7 +269,8 @@ const registrarLugar = (idDia) => {
             json => {
 
                 console.log(json);
-                document.getElementById('cerrarModalDia').click();
+                location.reload();
+                
             }
         )
 

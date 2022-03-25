@@ -13,9 +13,6 @@ document.addEventListener('DOMContentLoaded', async () => {
         })
     });
 
-    
-    
-
 }, false);
 
 document.getElementById('registrarViaje').addEventListener("click", function () {
@@ -135,6 +132,7 @@ const registrarViaje = () => {
             json => {
 
                 console.log(json);
+                location.reload();
 
             }
         )
