@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', async () => {
      
         item.addEventListener('click', event => {
             console.log(item.id);
-            window.location.replace("http://uicomponents-env.eba-r94pwpwc.us-east-1.elasticbeanstalk.com/pages/trip.html");
+            window.location.replace("../pages/trip.html");
             sessionStorage.setItem('idViaje', item.id);
 
 
