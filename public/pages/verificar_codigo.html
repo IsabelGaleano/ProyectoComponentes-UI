@@ -41,9 +41,6 @@
   <nav
     class="navbar navbar-expand-lg position-absolute top-0 z-index-3 w-100 shadow-none my-3  navbar-transparent mt-4">
     <div class="container">
-      <a class="navbar-brand font-weight-bolder ms-lg-0 ms-3 text-white" href="../pages/index.html">
-        Tripnary
-      </a>
     </div>
   </nav>
   <!-- End Navbar -->
@@ -55,56 +52,31 @@
         <div class="row justify-content-center">
           <div class="col-lg-5 text-center mx-auto">
             <h1 class="text-white mb-2 mt-5">Bienvenido</h1>
-            <p class="text-lead text-white">Ingrese toda la
+            <p class="text-lead text-white">Se encuentra a un paso de crear una cuenta en Tripnary, ingrese toda la
               información.</p>
           </div>
         </div>
       </div>
     </div>
-    <div class="container" id="form">
+    <div class="container">
       <div class="row mt-lg-n10 mt-md-n11 mt-n10">
         <div class="col-xl-4 col-lg-5 col-md-7 mx-auto">
           <div class="card z-index-0">
             <div class="card-header text-center pt-4">
-              <h5>Registrarse</h5>
+              <h5>Validar la cuenta</h5>
             </div>
             <div class="card-body">
               <form role="form text-left">
                 <div class="mb-3">
-                  <input type="text" class="form-control" placeholder="Nombre" aria-label="Nombre"
-                    aria-describedby="email-addon" id="nombre">
-                </div>
-                <div class="mb-3">
-                  <input type="text" class="form-control" placeholder="Primer Apellido" aria-label="Primer Apellido"
-                    aria-describedby="email-addon" id="apellido1">
-                </div>
-                <div class="mb-3">
-                  <input type="text" class="form-control" placeholder="Segundo Apellido" aria-label="Segundo Apellido"
-                    aria-describedby="email-addon" id="apellido2">
-                </div>
-                <div class="mb-3">
-                  <input type="email" class="form-control" placeholder="Correo Electrónico"
-                    aria-label="Correo Electrónico" aria-describedby="email-addon" id="email">
-                </div>
-                <div class="mb-3">
-                  <input type="tel" class="form-control" placeholder="Teléfono" aria-label="Teléfono"
-                    aria-describedby="email-addon" id="telefono">
-                </div>
-                <div class="mb-3">
-                  <input type="password" class="form-control" placeholder="Contraseña" aria-label="Contraseña"
-                    aria-describedby="password-addon" id="password">
-                </div>
-                <div class="mb-3">
-                  <input type="password" class="form-control" placeholder="Confirmar Contraseña"
-                    aria-label="Confirmar Contraseña" aria-describedby="password-addon" id="c_password">
+                  <input type="text" id="codigoIngresado" class="form-control" placeholder="Código" aria-label="Codigo"
+                    aria-describedby="email-addon">
                 </div>
                 <div class="text-center">
                   <button type="button" style="background-color: #5086FF;" class="btn bg-gradient-info w-100 my-4 mb-2"
-                    onclick="registrarUsuario()">Registrarse</button>
-                  <p class="text-sm mt-3 mb-0" id="success_msg">Usuario registrado!</p>
+                    onclick="verificarCodigo()">Verificar</button>
                 </div>
-                <p class="text-sm mt-3 mb-0">¿Ya tiene una cuenta? <a href="../pages/sign-in.html"
-                    class="text-dark font-weight-bolder">Iniciar sesión</a></p>
+                <a href="#" class="text-dark font-weight-bolder" onclick="reenviarCodigo()">Reenviar código</a>
+                <p class="text-sm mt-3 mb-0" id="success_msg">Código reenviado!</p>
               </form>
             </div>
           </div>
@@ -127,7 +99,7 @@
 
   <!-- -------- END FOOTER 3 w/ COMPANY DESCRIPTION WITH LINKS & SOCIAL ICONS & COPYRIGHT ------- -->
   <!--   Core JS Files   -->
-  <script src="../scripts/sign-up.js"></script>
+  <script src="../scripts/verificar_codigo.js"></script>
   <script src="../assets/assetsDashboard/js/core/popper.min.js"></script>
   <script src="../assets/assetsDashboard/js/core/bootstrap.min.js"></script>
   <script src="../assets/assetsDashboard/js/plugins/perfect-scrollbar.min.js"></script>
