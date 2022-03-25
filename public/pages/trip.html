@@ -324,6 +324,44 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                              <div class="modal-content">
+                                <div class="modal-header">
+                                  <h5 class="modal-title" id="staticBackdropLabel">Registrar lugar</h5>
+                                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <form role="form text-left">
+
+                                        <div class="row">
+                                            <input id="idViajeHidden" name="idViajeHidden" type="hidden">
+                                            <div class="col">
+                                                <label for="validationCustom01" class="form-label" id="nombreRlugar">Nombre del lugar
+                                                    </label>
+                                                <input type="text" class="form-control" id="nombreLugarR"
+                                                     required>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col">
+                                                <label for="validationCustom01" class="form-label">Horario 
+                                                    </label>
+                                                <input type="datetime-local"  class="form-control" id="horaRlugar"
+                                                     placeholder="">
+                                            </div>
+                                          
+                                        </div>
+
+                                    </form>
+                                </div>
+                                <div class="modal-footer">
+                                  <button type="button" class="btn bg-gradient-dark" data-bs-dismiss="modal">Cerrar</button>
+                                  <button  class="btn bg-gradient-primary" id="registrarLugar">Registrar</button>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
                         <div class="card-body pt-4 p-3">
                             <ul class="list-group" id="listadoDias">
                                 
