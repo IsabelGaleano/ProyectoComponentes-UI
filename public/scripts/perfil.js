@@ -1,5 +1,7 @@
 var correo = 'dcoto37@gmail.com';
 const getUsuarioByID = () => {
+    let numberPhoto = Math.floor(Math.random() * (15 - 1)) + 1;
+    document.getElementById("imgPerfil").src = `../assets/assetsTripnary/img/imgTrips/${numberPhoto}.jpg`;
     fetch('http://tripnaryserver-env.eba-eqs8mgem.us-east-1.elasticbeanstalk.com/usuarioDef/' + correo, {
         mode: "cors",
         headers: {
