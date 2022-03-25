@@ -279,13 +279,14 @@
                                             aria-label="Close"></button>
                                     </div>
                                     <div class="modal-body">
+                                       
                                         <form role="form text-left">
 
                                             <div class="row">
                                                 <div class="col">
                                                     <label for="validationCustom01" class="form-label">Fecha del día
                                                         </label>
-                                                    <input type="date" class="form-control" id="validationCustom01"
+                                                    <input type="date" class="form-control" id="fechaDia"
                                                         value="Mark" required>
                                                 </div>
                                             </div>
@@ -293,35 +294,22 @@
                                                 <div class="col">
                                                     <label for="validationCustom01" class="form-label">Horario 
                                                         </label>
-                                                    <input type="text" class="form-control" id="validationCustom01"
-                                                         placeholder="10:00 PM - 11:00 PM">
+                                                    <input type="datetime-local"  class="form-control" id="horaLugar"
+                                                         placeholder="">
                                                 </div>
                                                 <div class="col">
                                                     <label for="validationCustom01" class="form-label">Nombre del lugar
                                                         </label>
-                                                    <input type="text" class="form-control" id="validationCustom01"
+                                                    <input type="text" class="form-control" id="nombreLugar"
                                                          required>
                                                 </div>
                                             </div>
-                                            <div class="row">
-                                                <div class="col">
-                                                    <label for="validationCustom01" class="form-label">Horario 
-                                                        </label>
-                                                    <input type="text" class="form-control" id="validationCustom01"
-                                                         placeholder="10:00 PM - 11:00 PM">
-                                                </div>
-                                                <div class="col">
-                                                    <label for="validationCustom01" class="form-label">Nombre del lugar
-                                                        </label>
-                                                    <input type="text" class="form-control" id="validationCustom01"
-                                                         required>
-                                                </div>
-                                            </div>
+                                         
                                             <div class="row">
                                                 <div class="col">
                                                     <label for="validationCustom01" class="form-label">Comentarios
                                                         </label>
-                                                    <textarea name="text" id="" class="form-control" cols="10" rows="3"></textarea>
+                                                    <textarea name="text" id="comentariosDia" class="form-control" cols="10" rows="3"></textarea>
                                                 </div>
                                             </div>
 
@@ -330,72 +318,16 @@
                                     </div>
                                     <div class="modal-footer justify-content-end">
                                         <button type="button" class="btn bg-gradient-dark"
-                                            data-bs-dismiss="modal">Cerrar</button>
-                                        <button type="button" class="btn bg-gradient-primary">Guardar</button>
+                                            data-bs-dismiss="modal" id="cerrarModalDia">Cerrar</button>
+                                        <button type="button" class="btn bg-gradient-primary" id="registrarDia">Registrar</button>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div class="card-body pt-4 p-3">
-                            <ul class="list-group">
-                                <li class="list-group-item border-0 d-flex p-4 mb-2 bg-gray-100 border-radius-lg">
-                                    <div class="d-flex flex-column">
-                                        <h6 class="mb-3 text-sm">27 March 2020</h6>
-                                        <span class="mb-2 text-xs">8:00 AM - 10:00 AM: <span
-                                                class="text-dark font-weight-bold ms-sm-2">Museo Nacional</span></span>
-                                        <span class="mb-2 text-xs">12:00 PM - 01:00 PM: <span
-                                                class="text-dark font-weight-bold ms-sm-2">Restaurante
-                                                Spoon</span></span>
-                                        <span class="mb-2 text-xs">5:00 PM - 8:00 PM: <span
-                                                class="text-dark font-weight-bold ms-sm-2">Teatro Nacional</span></span>
-                                    </div>
-                                    <div class="ms-auto text-end">
-                                        <a class="btn btn-link text-danger text-gradient px-3 mb-0"
-                                            href="javascript:;"><i class="far fa-trash-alt me-2"></i>Eliminar</a>
-                                        <a class="btn btn-link text-dark px-3 mb-0" href="javascript:;"><i
-                                                class="fas fa-pencil-alt text-dark me-2"
-                                                aria-hidden="true"></i>Editar</a>
-                                    </div>
-                                </li>
-                                <li class="list-group-item border-0 d-flex p-4 mb-2 bg-gray-100 border-radius-lg">
-                                    <div class="d-flex flex-column">
-                                        <h6 class="mb-3 text-sm">27 March 2020</h6>
-                                        <span class="mb-2 text-xs">8:00 AM - 10:00 AM: <span
-                                                class="text-dark font-weight-bold ms-sm-2">Museo Nacional</span></span>
-                                        <span class="mb-2 text-xs">12:00 PM - 01:00 PM: <span
-                                                class="text-dark font-weight-bold ms-sm-2">Restaurante
-                                                Spoon</span></span>
-                                        <span class="mb-2 text-xs">5:00 PM - 8:00 PM: <span
-                                                class="text-dark font-weight-bold ms-sm-2">Teatro Nacional</span></span>
-                                    </div>
-                                    <div class="ms-auto text-end">
-                                        <a class="btn btn-link text-danger text-gradient px-3 mb-0"
-                                            href="javascript:;"><i class="far fa-trash-alt me-2"></i>Eliminar</a>
-                                        <a class="btn btn-link text-dark px-3 mb-0" href="javascript:;"><i
-                                                class="fas fa-pencil-alt text-dark me-2"
-                                                aria-hidden="true"></i>Editar</a>
-                                    </div>
-                                </li>
-                                <li class="list-group-item border-0 d-flex p-4 mb-2 bg-gray-100 border-radius-lg">
-                                    <div class="d-flex flex-column">
-                                        <h6 class="mb-3 text-sm">27 March 2020</h6>
-                                        <span class="mb-2 text-xs">8:00 AM - 10:00 AM: <span
-                                                class="text-dark font-weight-bold ms-sm-2">Museo Nacional</span></span>
-                                        <span class="mb-2 text-xs">12:00 PM - 01:00 PM: <span
-                                                class="text-dark font-weight-bold ms-sm-2">Restaurante
-                                                Spoon</span></span>
-                                        <span class="mb-2 text-xs">5:00 PM - 8:00 PM: <span
-                                                class="text-dark font-weight-bold ms-sm-2">Teatro Nacional</span></span>
-                                    </div>
-                                    <div class="ms-auto text-end">
-                                        <a class="btn btn-link text-danger text-gradient px-3 mb-0"
-                                            href="javascript:;"><i class="far fa-trash-alt me-2"></i>Eliminar</a>
-                                        <a class="btn btn-link text-dark px-3 mb-0" href="javascript:;"><i
-                                                class="fas fa-pencil-alt text-dark me-2"
-                                                aria-hidden="true"></i>Editar</a>
-                                    </div>
-                                </li>
-
+                            <ul class="list-group" id="listadoDias">
+                                
+                                
 
                             </ul>
                         </div>
@@ -405,7 +337,7 @@
                     <div class="card h-100 mb-4">
                         <div class="position-relative">
                             <a class="d-block shadow-xl border-radius-xl">
-                                <img src="../assets/assetsDashboard/img/home-decor-3.jpg" alt="img-blur-shadow"
+                                <img src="../assets/assetsDashboard/img/home-decor-3.jpg" alt="img-blur-shadow" id="imgViaje"
                                     class="img-fluid shadow border-radius-xl">
                             </a>
                         </div>
@@ -414,7 +346,7 @@
                             <ul class="list-group">
                                 <li
                                     class="list-group-item border-0 d-flex justify-content-between ps-0 mb-2 border-radius-lg">
-                                    <span class="text-xs">27 March 2020, at 12:30 PM</span>
+                                    <span class="text-xs" id="periodoViaje"></span>
                                 </li>
 
                             </ul>
@@ -422,7 +354,7 @@
                             <ul class="list-group">
                                 <li
                                     class="list-group-item border-0 d-flex justify-content-between ps-0 mb-2 border-radius-lg">
-                                    <span class="text-xs">Costa Rica, San José</span>
+                                    <span class="text-xs" id="destinoViaje"></span>
                                 </li>
 
                             </ul>
@@ -430,7 +362,7 @@
                             <ul class="list-group">
                                 <li
                                     class="list-group-item border-0 d-flex justify-content-between ps-0 mb-2 border-radius-lg">
-                                    <span class="text-xs">Viaje familiar</span>
+                                    <span class="text-xs" id="descripcionViaje"></span>
                                 </li>
 
                             </ul>
@@ -466,6 +398,7 @@
     </main>
 
     <!--   Core JS Files   -->
+    <script src="../scripts/trip.js"></script>
     <script src="../assets/assetsDashboard/js/core/popper.min.js"></script>
     <script src="../assets/assetsDashboard/js/core/bootstrap.min.js"></script>
     <script src="../assets/assetsDashboard/js/plugins/perfect-scrollbar.min.js"></script>
