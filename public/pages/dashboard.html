@@ -285,7 +285,7 @@
                                                 <div class="col">
                                                     <label for="validationCustom01" class="form-label">Ingresa la fecha de inicio 
                                                         </label>
-                                                    <input type="date" class="form-control" id="validationCustom01"
+                                                    <input type="date" class="form-control" id="fechaInicio"
                                                          placeholder="10:00 PM - 11:00 PM">
                                                 </div>     
                                             </div>
@@ -293,7 +293,7 @@
                                                 <div class="col">
                                                     <label for="validationCustom01" class="form-label">Ingresa la fecha de finalización
                                                         </label>
-                                                    <input type="date" class="form-control" id="validationCustom01"
+                                                    <input type="date" class="form-control" id="fechaFin"
                                                          required>
                                                 </div>
                                             </div>
@@ -301,7 +301,7 @@
                                                 <div class="col">
                                                     <label for="validationCustom01" class="form-label">Ingresa el destino
                                                         </label>
-                                                    <input type="text" class="form-control" id="validationCustom01"
+                                                    <input type="text" class="form-control" id="destinoViaje"
                                                          required>
                                                 </div>
                                             </div>
@@ -309,7 +309,7 @@
                                                 <div class="col">
                                                     <label for="validationCustom01" class="form-label">Descripción del viaje
                                                         </label>
-                                                    <textarea name="text" id="" class="form-control" cols="10" rows="3"></textarea>
+                                                    <textarea name="text" id="descripcionViaje" class="form-control" cols="10" rows="3"></textarea>
                                                 </div>
                                             </div>
 
@@ -318,8 +318,8 @@
                                     </div>
                                     <div class="modal-footer justify-content-end">
                                         <button type="button" class="btn bg-gradient-dark"
-                                            data-bs-dismiss="modal">Cerrar</button>
-                                        <button type="button" class="btn bg-gradient-primary">Guardar</button>
+                                            data-bs-dismiss="modal" id="cerrarModal">Cerrar</button>
+                                        <button type="button" class="btn bg-gradient-primary" id="registrarViaje">Registrar</button>
                                     </div>
                                 </div>
                             </div>
