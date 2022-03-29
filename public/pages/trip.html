@@ -31,6 +31,7 @@
     <link href="../assets/assetsDashboard/css/nucleo-svg.css" rel="stylesheet" />
     <!-- Font Awesome Icons -->
     <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10/dist/sweetalert2.all.min.js"></script>
     <link href="../assets/assetsDashboard/css/nucleo-svg.css" rel="stylesheet" />
     <!-- CSS Files -->
     <link id="pagestyle" href="../assets/assetsDashboard/css/soft-ui-dashboard.css?v=1.0.3" rel="stylesheet" />
@@ -44,7 +45,8 @@
                 aria-hidden="true" id="iconSidenav"></i>
             <a class="navbar-brand m-0" href="https://demos.creative-tim.com/soft-ui-dashboard/pages/dashboard.html"
                 target="_blank">
-                <img src="../assets/assetsDashboard/img/tripnary_logos/Asset 3@2x.png" class="navbar-brand-img h-100" alt="main_logo">
+                <img src="../assets/assetsDashboard/img/tripnary_logos/Asset 3@2x.png" class="navbar-brand-img h-100"
+                    alt="main_logo">
             </a>
         </div>
         <hr class="horizontal dark mt-0">
@@ -110,7 +112,8 @@
         <div class="sidenav-footer mx-3 ">
             <div class="card card-background shadow-none card-background-mask-secondary" id="sidenavCard">
                 <div class="full-background"
-                    style="background-image: url('../assets/assetsDashboard/img/curved-images/white-curved.jpeg')"></div>
+                    style="background-image: url('../assets/assetsDashboard/img/curved-images/white-curved.jpeg')">
+                </div>
                 <div class="card-body text-start p-3 w-100">
                     <div
                         class="icon icon-shape icon-sm bg-white shadow text-center mb-3 d-flex align-items-center justify-content-center border-radius-md">
@@ -169,7 +172,8 @@
                                     <a class="dropdown-item border-radius-md" href="javascript:;">
                                         <div class="d-flex py-1">
                                             <div class="my-auto">
-                                                <img src="../assets/assetsDashboard/img/team-2.jpg" class="avatar avatar-sm  me-3 ">
+                                                <img src="../assets/assetsDashboard/img/team-2.jpg"
+                                                    class="avatar avatar-sm  me-3 ">
                                             </div>
                                             <div class="d-flex flex-column justify-content-center">
                                                 <h6 class="text-sm font-weight-normal mb-1">
@@ -258,12 +262,17 @@
                                     <h6 class="mb-0">Días de viaje</h6>
                                 </div>
                                 <div class="col-6 text-end">
+                                    <!-- <button type="button" class="btn btn-sm mb-0" data-bs-toggle="modal" 
+                                        data-bs-target="#exampleModal" style="margin-right: 6px;" id="actViaje">
+                                        Editar
+                                    </button> -->
 
                                     <button type="button" class="btn btn-outline-primary btn-sm mb-0"
                                         data-bs-toggle="modal" data-bs-target="#exampleModal">
                                         Agregar
                                     </button>
                                     <button class="btn bg-gradient-dark btn-sm mb-0">Descargar</button>
+
 
                                 </div>
 
@@ -279,49 +288,37 @@
                                             aria-label="Close"></button>
                                     </div>
                                     <div class="modal-body">
+
                                         <form role="form text-left">
 
                                             <div class="row">
                                                 <div class="col">
                                                     <label for="validationCustom01" class="form-label">Fecha del día
-                                                        </label>
-                                                    <input type="date" class="form-control" id="validationCustom01"
-                                                        value="Mark" required>
+                                                    </label>
+                                                    <input type="date" class="form-control" id="fechaDia" value="Mark"
+                                                        required>
                                                 </div>
                                             </div>
                                             <div class="row">
                                                 <div class="col">
-                                                    <label for="validationCustom01" class="form-label">Horario 
-                                                        </label>
-                                                    <input type="text" class="form-control" id="validationCustom01"
-                                                         placeholder="10:00 PM - 11:00 PM">
+                                                    <label for="validationCustom01" class="form-label">Horario
+                                                    </label>
+                                                    <input type="datetime-local" class="form-control" id="horaLugar"
+                                                        placeholder="">
                                                 </div>
                                                 <div class="col">
                                                     <label for="validationCustom01" class="form-label">Nombre del lugar
-                                                        </label>
-                                                    <input type="text" class="form-control" id="validationCustom01"
-                                                         required>
+                                                    </label>
+                                                    <input type="text" class="form-control" id="nombreLugar" required>
                                                 </div>
                                             </div>
-                                            <div class="row">
-                                                <div class="col">
-                                                    <label for="validationCustom01" class="form-label">Horario 
-                                                        </label>
-                                                    <input type="text" class="form-control" id="validationCustom01"
-                                                         placeholder="10:00 PM - 11:00 PM">
-                                                </div>
-                                                <div class="col">
-                                                    <label for="validationCustom01" class="form-label">Nombre del lugar
-                                                        </label>
-                                                    <input type="text" class="form-control" id="validationCustom01"
-                                                         required>
-                                                </div>
-                                            </div>
+
                                             <div class="row">
                                                 <div class="col">
                                                     <label for="validationCustom01" class="form-label">Comentarios
-                                                        </label>
-                                                    <textarea name="text" id="" class="form-control" cols="10" rows="3"></textarea>
+                                                    </label>
+                                                    <textarea name="text" id="comentariosDia" class="form-control"
+                                                        cols="10" rows="3"></textarea>
                                                 </div>
                                             </div>
 
@@ -329,72 +326,100 @@
                                         </form>
                                     </div>
                                     <div class="modal-footer justify-content-end">
-                                        <button type="button" class="btn bg-gradient-dark"
-                                            data-bs-dismiss="modal">Cerrar</button>
-                                        <button type="button" class="btn bg-gradient-primary">Guardar</button>
+                                        <button type="button" class="btn bg-gradient-dark" data-bs-dismiss="modal"
+                                            id="cerrarModalDia">Cerrar</button>
+                                        <button type="button" class="btn bg-gradient-primary"
+                                            id="registrarDia">Registrar</button>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false"
+                            tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="staticBackdropLabel">Registrar lugar</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form role="form text-left">
+
+                                            <div class="row">
+                                                <input id="idViajeHidden" name="idViajeHidden" type="hidden">
+                                                <div class="col">
+                                                    <label for="validationCustom01" class="form-label"
+                                                        id="nombreRlugar">Nombre del lugar
+                                                    </label>
+                                                    <input type="text" class="form-control" id="nombreLugarR" required>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col">
+                                                    <label for="validationCustom01" class="form-label">Horario
+                                                    </label>
+                                                    <input type="datetime-local" class="form-control" id="horaRlugar"
+                                                        placeholder="">
+                                                </div>
+
+                                            </div>
+
+                                        </form>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn bg-gradient-dark"
+                                            data-bs-dismiss="modal">Cerrar</button>
+                                        <button class="btn bg-gradient-primary" id="registrarLugar">Registrar</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal" id="myModal">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+
+                                    <!-- Modal Header -->
+                                    <div class="modal-header">
+                                        <h4 class="modal-title">Actualizar día</h4>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                                    </div>
+
+                                    <!-- Modal body -->
+                                    <div class="modal-body">
+                                        <form role="form text-left">
+                                            <input id="idDiaHidden" name="prodId" type="hidden">
+
+                                            <div class="row">
+                                                <div class="col">
+                                                    <label for="validationCustom01" class="form-label">Fecha del día
+                                                    </label>
+                                                    <input type="date" class="form-control" id="fechaDiaAct"
+                                                        value="Mark" required>
+                                                </div>
+                                            </div>
+                                            <div class="row" id="listadoLugaresAct">
+                                                
+                                                
+                                            </div>
+
+
+                                        </form>
+                                    </div>
+
+                                    <!-- Modal footer -->
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn bg-gradient-dark"
+                                            data-bs-dismiss="modal" id="cerrarAct">Cerrar</button>
+                                        <button class="btn bg-gradient-primary" id="actualizarDiaLugar">Actualizar</button>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
                         <div class="card-body pt-4 p-3">
-                            <ul class="list-group">
-                                <li class="list-group-item border-0 d-flex p-4 mb-2 bg-gray-100 border-radius-lg">
-                                    <div class="d-flex flex-column">
-                                        <h6 class="mb-3 text-sm">27 March 2020</h6>
-                                        <span class="mb-2 text-xs">8:00 AM - 10:00 AM: <span
-                                                class="text-dark font-weight-bold ms-sm-2">Museo Nacional</span></span>
-                                        <span class="mb-2 text-xs">12:00 PM - 01:00 PM: <span
-                                                class="text-dark font-weight-bold ms-sm-2">Restaurante
-                                                Spoon</span></span>
-                                        <span class="mb-2 text-xs">5:00 PM - 8:00 PM: <span
-                                                class="text-dark font-weight-bold ms-sm-2">Teatro Nacional</span></span>
-                                    </div>
-                                    <div class="ms-auto text-end">
-                                        <a class="btn btn-link text-danger text-gradient px-3 mb-0"
-                                            href="javascript:;"><i class="far fa-trash-alt me-2"></i>Eliminar</a>
-                                        <a class="btn btn-link text-dark px-3 mb-0" href="javascript:;"><i
-                                                class="fas fa-pencil-alt text-dark me-2"
-                                                aria-hidden="true"></i>Editar</a>
-                                    </div>
-                                </li>
-                                <li class="list-group-item border-0 d-flex p-4 mb-2 bg-gray-100 border-radius-lg">
-                                    <div class="d-flex flex-column">
-                                        <h6 class="mb-3 text-sm">27 March 2020</h6>
-                                        <span class="mb-2 text-xs">8:00 AM - 10:00 AM: <span
-                                                class="text-dark font-weight-bold ms-sm-2">Museo Nacional</span></span>
-                                        <span class="mb-2 text-xs">12:00 PM - 01:00 PM: <span
-                                                class="text-dark font-weight-bold ms-sm-2">Restaurante
-                                                Spoon</span></span>
-                                        <span class="mb-2 text-xs">5:00 PM - 8:00 PM: <span
-                                                class="text-dark font-weight-bold ms-sm-2">Teatro Nacional</span></span>
-                                    </div>
-                                    <div class="ms-auto text-end">
-                                        <a class="btn btn-link text-danger text-gradient px-3 mb-0"
-                                            href="javascript:;"><i class="far fa-trash-alt me-2"></i>Eliminar</a>
-                                        <a class="btn btn-link text-dark px-3 mb-0" href="javascript:;"><i
-                                                class="fas fa-pencil-alt text-dark me-2"
-                                                aria-hidden="true"></i>Editar</a>
-                                    </div>
-                                </li>
-                                <li class="list-group-item border-0 d-flex p-4 mb-2 bg-gray-100 border-radius-lg">
-                                    <div class="d-flex flex-column">
-                                        <h6 class="mb-3 text-sm">27 March 2020</h6>
-                                        <span class="mb-2 text-xs">8:00 AM - 10:00 AM: <span
-                                                class="text-dark font-weight-bold ms-sm-2">Museo Nacional</span></span>
-                                        <span class="mb-2 text-xs">12:00 PM - 01:00 PM: <span
-                                                class="text-dark font-weight-bold ms-sm-2">Restaurante
-                                                Spoon</span></span>
-                                        <span class="mb-2 text-xs">5:00 PM - 8:00 PM: <span
-                                                class="text-dark font-weight-bold ms-sm-2">Teatro Nacional</span></span>
-                                    </div>
-                                    <div class="ms-auto text-end">
-                                        <a class="btn btn-link text-danger text-gradient px-3 mb-0"
-                                            href="javascript:;"><i class="far fa-trash-alt me-2"></i>Eliminar</a>
-                                        <a class="btn btn-link text-dark px-3 mb-0" href="javascript:;"><i
-                                                class="fas fa-pencil-alt text-dark me-2"
-                                                aria-hidden="true"></i>Editar</a>
-                                    </div>
-                                </li>
+                            <ul class="list-group" id="listadoDias">
+
 
 
                             </ul>
@@ -406,7 +431,7 @@
                         <div class="position-relative">
                             <a class="d-block shadow-xl border-radius-xl">
                                 <img src="../assets/assetsDashboard/img/home-decor-3.jpg" alt="img-blur-shadow"
-                                    class="img-fluid shadow border-radius-xl">
+                                    id="imgViaje" class="img-fluid shadow border-radius-xl">
                             </a>
                         </div>
                         <div class="card-body pt-4 p-3">
@@ -414,7 +439,7 @@
                             <ul class="list-group">
                                 <li
                                     class="list-group-item border-0 d-flex justify-content-between ps-0 mb-2 border-radius-lg">
-                                    <span class="text-xs">27 March 2020, at 12:30 PM</span>
+                                    <span class="text-xs" id="periodoViaje"></span>
                                 </li>
 
                             </ul>
@@ -422,7 +447,7 @@
                             <ul class="list-group">
                                 <li
                                     class="list-group-item border-0 d-flex justify-content-between ps-0 mb-2 border-radius-lg">
-                                    <span class="text-xs">Costa Rica, San José</span>
+                                    <span class="text-xs" id="destinoViaje"></span>
                                 </li>
 
                             </ul>
@@ -430,7 +455,7 @@
                             <ul class="list-group">
                                 <li
                                     class="list-group-item border-0 d-flex justify-content-between ps-0 mb-2 border-radius-lg">
-                                    <span class="text-xs">Viaje familiar</span>
+                                    <span class="text-xs" id="descripcionViaje"></span>
                                 </li>
 
                             </ul>
@@ -466,6 +491,7 @@
     </main>
 
     <!--   Core JS Files   -->
+    <script src="../scripts/trip.js"></script>
     <script src="../assets/assetsDashboard/js/core/popper.min.js"></script>
     <script src="../assets/assetsDashboard/js/core/bootstrap.min.js"></script>
     <script src="../assets/assetsDashboard/js/plugins/perfect-scrollbar.min.js"></script>
