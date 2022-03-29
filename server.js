@@ -70,9 +70,15 @@ app.post('/login', async function(request, response, next) {
 
 app.get('/home', function(request, response) {
 	if (request.session.loggedin) {
-		response.send('Welcome back, ' + request.session.username + '!');
+		
+		//response.send('Welcome back, ' + request.session.username + '!');
+		response.send(`
+		<h3>Welcome back ${request.session.username}! </h3>
+		<a href='/logout'>Logout</a>
+		`);
 	} else {
-		response.send('Please login to view this page!');
+		//response.send('Please login to view this page!');
+		
 	}
 	response.end();
 });
@@ -83,7 +89,11 @@ app.get('/logout', (req ,res)=>{
             console.log(err);
             res.send("Error")
         }else{
-            res.send("logout Successfully...!");
+            //res.send("logout Successfully...!");
+			res.send(`
+		<h3>Logout successfully...!</h3>
+		<a href='/pages/sign-in'>Go back to login</a>
+		`);
         }
     })
 })
