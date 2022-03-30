@@ -1,4 +1,4 @@
-var correo = 'dcoto37@gmail.com';
+var correo = document.getElementById('idUserHidden').innerText;
 const getUsuarioByID = () => {
     let numberPhoto = Math.floor(Math.random() * (15 - 1)) + 1;
     document.getElementById("imgPerfil").src = `../assets/assetsTripnary/img/imgTrips/${numberPhoto}.jpg`;
@@ -66,7 +66,7 @@ const getViajeByUsuario = () => {
                 ' <div class="avatar me-3"> <img src="../assets/assetsDashboard/img/small-logos/icon-sun-cloud.png" alt="kal"class="border-radius-lg shadow">' + 
                 '</div><div class="d-flex align-items-start flex-column justify-content-center"><h6 class="mb-0 text-sm">' + json[i].descripcion +'</h6>' + 
                 '<p class="mb-0 text-xs">' + json[i].fechaInicio.split('-')[2] + '/' + json[i].fechaInicio.split('-')[1] + '/' + json[i].fechaInicio.split('-')[0] + 
-                ' - ' + json[i].fechaFin.split('-')[2] + '/' + json[i].fechaFin.split('-')[1] + '/' + json[i].fechaFin.split('-')[0] + '</p></div><a class="btn btn-link pe-3 ps-0 mb-0 ms-auto" href="../pages/trip.html">Ver</a>')
+                ' - ' + json[i].fechaFin.split('-')[2] + '/' + json[i].fechaFin.split('-')[1] + '/' + json[i].fechaFin.split('-')[0] + '</p></div><a class="btn btn-link pe-3 ps-0 mb-0 ms-auto" href="../pages/trip">Ver</a>')
             }
             console.log(json);
         }
