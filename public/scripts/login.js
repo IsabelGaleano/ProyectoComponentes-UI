@@ -34,7 +34,7 @@ async function validarLogin() {
     const email = document.getElementById('email-inp');
     const pwd = document.getElementById('pwd-inp');
     const usuario = await getUsuario(email.value);
-
+    console.log(md5(pwd.value))
     //Validar vacios unicamente
     if (email.value === "") {
         email.classList.add('is-invalid');
@@ -51,19 +51,19 @@ async function validarLogin() {
     
     if(usuario.value === false  && email.value !== "" && pwd.value !== "") {
         $("#errorMessage").show();
-    } else if(usuario.idUsuario === email.value && usuario.contrasenna !== pwd.value && pwd.value !== "" ) {
+    } else if(usuario.idUsuario === email.value && usuario.contrasenna !== md5(pwd.value) && pwd.value !== "" ) {
         $("#errorMessage").show();
     } 
-    else if(usuario.idUsuario === email.value && usuario.contrasenna === pwd.value) {
+    else if(usuario.idUsuario === email.value && usuario.contrasenna === md5(pwd.value)) {
         //console.log('here')
         $("#errorMessage").hide();
         $("#successMessage").show();
         
         
         setTimeout(async function () {
-            await postLogin(email.value, pwd.value);
+            await postLogin(email.value, md5(pwd.value));
 
-            window.location.href = "/home";
+            window.location.href = "/pages/dashboard";
          }, 1500);
     }
     

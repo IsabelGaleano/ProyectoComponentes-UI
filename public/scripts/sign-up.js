@@ -29,7 +29,7 @@ const registrarUsuario = () => {
                 document.getElementById('success_msg').style.display = "block";
                 document.getElementById('success_msg').style.color = "red";
                 setTimeout(function () {
-                    window.location.href = "../pages/sign-up.html";
+                    window.location.href = "../pages/sign-up";
                 }, 3000);
             }
             return response.json();
@@ -64,14 +64,14 @@ const postCodigo = (correo) => {
                 document.getElementById('success_msg').innerText = "Se le ha enviado un código por el correo registrado";
                 document.getElementById('success_msg').style.display = "block";
                 setTimeout(function () {
-                    window.location.href = "../pages/verificar_codigo.html";
+                    window.location.href = "../pages/verificar_codigo";
                 }, 3000);
             } else {
                 document.getElementById('success_msg').innerText = "Envío de código ha fallado";
                 document.getElementById('success_msg').style.display = "block";
                 document.getElementById('success_msg').style.color = "red";
                 setTimeout(function () {
-                    window.location.href = "../pages/sign-up.html";
+                    window.location.href = "../pages/sign-up";
                 }, 3000);
             }
         }
