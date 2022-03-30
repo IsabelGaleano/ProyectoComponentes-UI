@@ -4,31 +4,33 @@ const bodyParser = require('body-parser')
 const app = express()
 const {PORT = 3000} = process.env
 const path = require('path');
+const { json } = require('express/lib/response')
 const folder = path.join(__dirname, 'public');
 app.use(express.static(folder))
 
 app.use(bodyParser.urlencoded({extended : true}));
 app.use(bodyParser.json());
 
-app.get('/', function(req, res){
-	res.render('about-us');
- });
-
- /* prueba
- app.post('/clicked', (req, res) => {
-    console.log(req.body.a);
-    console.log(req.body.b);
-    console.log(req.body);
-    res.sendStatus(201);
-  })*/
+app.set('views', path.join(__dirname, '/public/pages'));
+app.set('view engine', 'ejs');
 
 
 //MANEJO DE VISTAS ÚNICAMENTE
+/*
 app.get('/', (req, res) => res.sendFile(path.join(__dirname+ '/public/pages/about-us.html')))
 
+Login
 app.get('/pages/sign-in', function (req, res) {
     res.sendFile(path.join(__dirname+ '/public/pages/sign-in.html'))
   });
+
+Dashboard
+app.get('/pages/dashboard', function (req, res) {
+    res.sendFile(path.join(__dirname+ '/public/pages/dashboard.html'))
+  });
+*/
+
+
 
 //MANEJO LOGIN
 app.use(session({
@@ -36,6 +38,39 @@ app.use(session({
 	resave: true,
 	saveUninitialized: true
 }));
+
+
+//Para manejar datos de sesion
+/*
+const verifyLogin = () => {
+	return (req,res,next) => {
+		const {user} = req.session;
+	if(user) {
+		res.locals.user = user;
+		console.log("Pasa sesion: "+req.session.username);
+	} else{
+		console.log("No usuario");
+	}
+	next()
+	}
+}*/
+
+app.use((req, res, next) => {
+	//console.log(req.session);
+	const {user} = req.session;
+	//res.locals.user = req.session.user;
+	if(user) {
+		//res.locals.user = user;
+		res.locals.username = req.session.username;
+		res.locals.name = req.session.name;
+		console.log("Pasa sesion: "+req.session.username);
+		//console.log("usuario pasa: "+req.session.user);
+	} else{
+		console.log("No usuario");
+	}
+	next()
+});
+
 
 //RUTA PARA EL LOGIN Y CREAR LA SESSION CON DATOS
 app.post('/login', async function(request, response, next) {
@@ -51,8 +86,11 @@ app.post('/login', async function(request, response, next) {
 		if (usuario.idUsuario === username && usuario.contrasenna === password) {
             request.session.loggedin = true;
             request.session.username = username;
+			request.session.name = usuario.nombre;
+			request.session.user = JSON.stringify(usuario);
+
             console.log("sesion creada");
-            //response.redirect('/home');
+            //response.render('/dashboard');
 			//response.end(window.location.href = "home");
         } else {
             console.log("incorrecto");
@@ -65,8 +103,16 @@ app.post('/login', async function(request, response, next) {
 		response.send('Please enter Username and Password!');
 		response.end();
 	}
-	return false;
+	response.end();
 });
+
+const redirectLogin = (req, res, next) => {
+	if(req.session.user) {
+		res.redirect('/sign-in')
+	} else {
+		next()
+	}
+}
 
 app.get('/home', function(request, response) {
 	if (request.session.loggedin) {
@@ -97,6 +143,35 @@ app.get('/logout', (req ,res)=>{
         }
     })
 })
+
+app.get('/', function(req, res){
+	res.render('about-us');
+ });
+ app.get('/pages/sign-in', function(req, res){
+	res.render('sign-in');
+ });
+ app.get('/pages/dashboard', function(req, res){
+	console.log("Dashboard: "+req.session.user);
+	res.render('dashboard');
+ });
+ app.get('/pages/sign-up', function(req, res){
+	res.render('sign-up');
+ });
+
+ app.get('/pages/verificar_codigo', function(req, res){
+	res.render('verificar_codigo');
+ });
+
+ app.get('/pages/trip', function(req, res){
+	res.render('trip');
+ });
+
+ app.get('/pages/perfil', function(req, res){
+	res.render('perfil');
+ });
+
+
+
 
 //--------------------------
 
