@@ -126,7 +126,7 @@ const activarUsuarios = (correo) => {
                         document.getElementById('success_msg').innerText = "Registro Terminado! Redirigiendose a Iniciar Sesión";
                         document.getElementById('success_msg').style.display = "block";
                         setTimeout(function () {
-                            window.location.href = "../pages/sign-in.html";
+                            window.location.href = "../pages/sign-in";
                         }, 3000);
         
                     } else {

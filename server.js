@@ -158,6 +158,20 @@ app.get('/', function(req, res){
 	res.render('sign-up');
  });
 
+ app.get('/pages/verificar_codigo', function(req, res){
+	res.render('verificar_codigo');
+ });
+
+ app.get('/pages/trip', function(req, res){
+	res.render('trip');
+ });
+
+ app.get('/pages/perfil', function(req, res){
+	res.render('perfil');
+ });
+
+
+
 
 //--------------------------
 

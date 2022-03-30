@@ -1,17 +1,20 @@
-
+let usuarioId;
 document.addEventListener('DOMContentLoaded', async () => {
-    await cargarViajes();
+    usuarioId = document.getElementById('idUserHidden').innerText;
+    console.log(usuarioId);
+    await cargarViajes(usuarioId);
 
     document.querySelectorAll('.plan').forEach(item => {
 
         item.addEventListener('click', event => {
             console.log(item.id);
-            window.location.replace("../pages/trip.html");
+            window.location.replace("../pages/trip");
             sessionStorage.setItem('idViaje', item.id);
 
 
         })
     });
+    
 
     document.querySelectorAll('.actViaje').forEach(item => {
 
@@ -41,8 +44,6 @@ document.getElementById('registrarViaje').addEventListener("click", function () 
         registrarViaje();
     }
 
-    document.getElementById('cerrarModal').click();
-
 });
 
 document.getElementById('cerrarModal').addEventListener("click", function () {
@@ -56,11 +57,11 @@ document.getElementById('cerrarModal').addEventListener("click", function () {
 
 
 
-const cargarViajes = () => {
+const cargarViajes = (idUsuario) => {
     return new Promise((resolve, reject) => {
 
 
-        let idUsuario = "2"; //Es temporal
+        
         fetch(`http://tripnaryserver-env.eba-eqs8mgem.us-east-1.elasticbeanstalk.com/viajeDef/getByUser/${idUsuario}`, {
             mode: "cors",
             headers: {
@@ -144,7 +145,7 @@ const registrarViaje = () => {
         fechaInicio: document.getElementById('fechaInicio').value,
         fechaFin: document.getElementById('fechaFin').value,
         destino: document.getElementById('destinoViaje').value,
-        idUsuario: "2",
+        idUsuario: document.getElementById('idUserHidden').innerText,
         estado: "activo"
     }
 
@@ -175,7 +176,10 @@ const registrarViaje = () => {
             json => {
 
                 console.log(json);
-                location.reload();
+                setTimeout(function(){
+                    location.reload();
+                }, 1000);
+               
 
             }
         )
@@ -188,7 +192,7 @@ const actualizarViaje = () => {
         fechaInicio: document.getElementById('fechaInicio').value,
         fechaFin: document.getElementById('fechaFin').value,
         destino: document.getElementById('destinoViaje').value,
-        idUsuario: "2",
+        idUsuario: document.getElementById('idUserHidden').innerText,
         estado: "activo"
     }
 
