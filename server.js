@@ -2,13 +2,13 @@ const express = require('express')
 const session = require('express-session')
 const bodyParser = require('body-parser')
 const app = express()
-const {PORT = 3000} = process.env
+const { PORT = 3000 } = process.env
 const path = require('path');
 const { json } = require('express/lib/response')
 const folder = path.join(__dirname, 'public');
 app.use(express.static(folder))
 
-app.use(bodyParser.urlencoded({extended : true}));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 app.set('views', path.join(__dirname, '/public/pages'));
@@ -21,15 +21,14 @@ app.get('/', (req, res) => res.sendFile(path.join(__dirname+ '/public/pages/abou
 
 Login
 app.get('/pages/sign-in', function (req, res) {
-    res.sendFile(path.join(__dirname+ '/public/pages/sign-in.html'))
+	res.sendFile(path.join(__dirname+ '/public/pages/sign-in.html'))
   });
 
 Dashboard
 app.get('/pages/dashboard', function (req, res) {
-    res.sendFile(path.join(__dirname+ '/public/pages/dashboard.html'))
+	res.sendFile(path.join(__dirname+ '/public/pages/dashboard.html'))
   });
 */
-
 
 
 //MANEJO LOGIN
@@ -40,83 +39,55 @@ app.use(session({
 }));
 
 
-//Para manejar datos de sesion
-/*
-const verifyLogin = () => {
-	return (req,res,next) => {
-		const {user} = req.session;
-	if(user) {
-		res.locals.user = user;
-		console.log("Pasa sesion: "+req.session.username);
-	} else{
-		console.log("No usuario");
-	}
-	next()
-	}
-}*/
-
 app.use((req, res, next) => {
-	//console.log(req.session);
-	const {user} = req.session;
+	const { user } = req.session;
 	//res.locals.user = req.session.user;
-	if(user) {
+	if (user) {
 		//res.locals.user = user;
 		res.locals.username = req.session.username;
 		res.locals.name = req.session.name;
-		console.log("Pasa sesion: "+req.session.username);
-		//console.log("usuario pasa: "+req.session.user);
-	} else{
-		console.log("No usuario");
+	} else {
+		//console.log("No usuario");
 	}
 	next()
 });
 
 
 //RUTA PARA EL LOGIN Y CREAR LA SESSION CON DATOS
-app.post('/login', async function(request, response, next) {
+app.post('/login', async function (request, response, next) {
 	var username = request.body.username;
 	var password = request.body.password;
-    //res.send(JSON.stringify(req.body));
-    const usuario = request.body.usuario;
-    
-	//console.log(request.body);
-    //PROBAR
+	//res.send(JSON.stringify(req.body));
+	const usuario = request.body.usuario;
+
+	//PROBAR
 	if (username && password) {
 		//console.log(usuario);
 		if (usuario.idUsuario === username && usuario.contrasenna === password) {
-            request.session.loggedin = true;
-            request.session.username = username;
+			request.session.loggedin = true;
+			request.session.username = username;
 			request.session.name = usuario.nombre;
 			request.session.user = JSON.stringify(usuario);
 
-            console.log("sesion creada");
-            //response.render('/dashboard');
-			//response.end(window.location.href = "home");
-        } else {
-            console.log("incorrecto");
-            response.send('Incorrect Username and/or Password!');
-			//document.getElementById("#errorMessage").show();
-        }			
-        response.end();
+			console.log("sesion creada");
+			//response.render('/dashboard');
+		} else {
+			console.log("incorrecto");
+			response.send('Incorrect Username and/or Password!');
+		}
+		response.end();
 	} else {
-        
+
 		response.send('Please enter Username and Password!');
 		response.end();
 	}
 	response.end();
 });
 
-const redirectLogin = (req, res, next) => {
-	if(req.session.user) {
-		res.redirect('/sign-in')
-	} else {
-		next()
-	}
-}
-
-app.get('/home', function(request, response) {
+//Pagina de prueba unicamente
+app.get('/home', function (request, response) {
 	if (request.session.loggedin) {
-		
+
 		//response.send('Welcome back, ' + request.session.username + '!');
 		response.send(`
 		<h3>Welcome back ${request.session.username}! </h3>
@@ -124,51 +95,78 @@ app.get('/home', function(request, response) {
 		`);
 	} else {
 		//response.send('Please login to view this page!');
-		
+
 	}
 	response.end();
 });
 
-app.get('/logout', (req ,res)=>{
-    req.session.destroy(function(err){
-        if(err){
-            console.log(err);
-            res.send("Error")
-        }else{
-            //res.send("logout Successfully...!");
-			res.send(`
-		<h3>Logout successfully...!</h3>
-		<a href='/pages/sign-in'>Go back to login</a>
-		`);
-        }
-    })
-})
+//Cierra sesión
+app.get("/pages/logout", function (req, res) {
+    req.session.destroy(console.log("destruye sesion"));
+    res.redirect('sign-in');
+	res.end();
+});
 
-app.get('/', function(req, res){
+
+//Configuraciones de rutas estandar del app
+
+app.get('/', function (req, res) {
 	res.render('about-us');
- });
- app.get('/pages/sign-in', function(req, res){
-	res.render('sign-in');
- });
- app.get('/pages/dashboard', function(req, res){
-	console.log("Dashboard: "+req.session.user);
-	res.render('dashboard');
- });
- app.get('/pages/sign-up', function(req, res){
-	res.render('sign-up');
- });
+});
 
- app.get('/pages/verificar_codigo', function(req, res){
+app.get('/pages/sign-in', function (req, res) {
+	//Está logeado
+	if (req.session.loggedin) {
+		//redirige al dash
+		res.redirect('dashboard');
+	} else {
+		res.render('sign-in');
+	}
+});
+app.get('/pages/dashboard', function (req, res) {
+	//Está logeado
+	if (req.session.loggedin) {
+		//redirige al dash
+		res.render('dashboard');
+	} else {
+		res.redirect('sign-in');
+	}
+});
+app.get('/pages/sign-up', function (req, res) {
+	//Está logeado
+	if (req.session.loggedin) {
+		//redirige al dash
+		res.redirect('dashboard');
+	} else {
+		res.render('sign-up');
+	}
+	
+});
+
+app.get('/pages/verificar_codigo', function (req, res) {
 	res.render('verificar_codigo');
- });
+});
 
- app.get('/pages/trip', function(req, res){
-	res.render('trip');
- });
+app.get('/pages/trip', function (req, res) {
+	//Está logeado
+	if (req.session.loggedin) {
+		//redirige al trip
+		res.render('trip');
+	} else {
+		res.redirect('sign-in');
+	}
+	
+});
 
- app.get('/pages/perfil', function(req, res){
-	res.render('perfil');
- });
+app.get('/pages/perfil', function (req, res) {
+	//Está logeado
+	if (req.session.loggedin) {
+		//redirige al perfil
+		res.render('perfil');
+	} else {
+		res.redirect('sign-in');
+	}
+});
 
 
 
