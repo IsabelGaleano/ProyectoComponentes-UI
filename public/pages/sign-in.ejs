@@ -34,6 +34,9 @@
   <link href="../assets/assetsDashboard/css/nucleo-svg.css" rel="stylesheet" />
   <!-- CSS Files -->
   <link id="pagestyle" href="../assets/assetsDashboard/css/soft-ui-dashboard.css?v=1.0.3" rel="stylesheet" />
+  <link href="../css_extra/extras.css"/>
+  <!--JQUERY-->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </head>
 
 <body class="">
@@ -44,7 +47,7 @@
         <nav
           class="navbar navbar-expand-lg blur blur-rounded top-0 z-index-3 shadow position-absolute my-3 py-2 start-0 end-0 mx-4">
           <div class="container-fluid">
-            <a class="navbar-brand font-weight-bolder ms-lg-0 ms-3 " href="../pages/index.html">
+            <a class="navbar-brand font-weight-bolder ms-lg-0 ms-3 " href="/">
               Tripnary
             </a>
             <button class="navbar-toggler shadow-none ms-2" type="button" data-bs-toggle="collapse"
@@ -60,19 +63,19 @@
               <ul class="navbar-nav mx-auto">
                 <li class="nav-item">
                   <a class="nav-link d-flex align-items-center me-2 active" aria-current="page"
-                    href="../pages/index.html">
+                    href="/pages/dashboard">
                     <i class="fa fa-chart-pie opacity-6 text-dark me-1"></i>
                     Dashboard
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link me-2" href="../pages/sign-up.html">
+                  <a class="nav-link me-2" href="/pages/sign-up">
                     <i class="fas fa-user-circle opacity-6 text-dark me-1"></i>
                     Registrarse
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link me-2" href="../pages/sign-in.html">
+                  <a class="nav-link me-2" href="/pages/sign-in">
                     <i class="fas fa-key opacity-6 text-dark me-1"></i>
                     Iniciar Sesión
                   </a>
@@ -96,20 +99,29 @@
                   <h3 class="font-weight-bolder text-info text-gradient">Bienvenido</h3>
                   <p class="mb-0">Ingrese su correo electrónico y contraseña para iniciar sesión</p>
                 </div>
+                
                 <div class="card-body">
-                  <form role="form">
+                  <form action="/login" method="post" class="needs-validation" >
+                    
+                    <div class="alert alert-danger" style="display: none;" id="errorMessage" role="alert" name="errorMessage">
+                      <p style="color: white;">Correo y/o contraseña inválidos</p>
+                    </div>
+                    <div class="alert alert-success" style="display: none;" id="successMessage" role="alert">
+                      Datos ingresados correctamente
+                    </div>
+                  
                     <label>Correo Electrónico</label>
                     <div class="mb-3">
-                      <input type="email" class="form-control" placeholder="Correo Electrónico" aria-label="Email"
-                        aria-describedby="email-addon">
+                      <input type="email" name="username" class="form-control" placeholder="Correo Electrónico" aria-label="Email"
+                        aria-describedby="email-addon" id="email-inp" required>
                     </div>
                     <label>Contraseña</label>
                     <div class="mb-3">
-                      <input type="email" class="form-control" placeholder="Contraseña" aria-label="Password"
-                        aria-describedby="password-addon">
+                      <input type="password" name="password" class="form-control" placeholder="Contraseña" aria-label="Password"
+                        aria-describedby="password-addon" id="pwd-inp" required>
                     </div>
                     <div class="text-center">
-                      <button type="button" class="btn bg-gradient-info w-100 mt-4 mb-0">Iniciar Sesión</button>
+                      <button type="submit" class="btn bg-gradient-info w-100 mt-4 mb-0" id="btn-login">Iniciar Sesión</button>
                     </div>
                   </form>
                 </div>
@@ -151,6 +163,10 @@
   <script async defer src="https://buttons.github.io/buttons.js"></script>
   <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
   <script src="../assets/assetsDashboard/js/soft-ui-dashboard.min.js?v=1.0.3"></script>
+
+  <!--Control login-->
+  <script src="../scripts/md5.js"></script>
+  <script src="../scripts/login.js"></script>
 </body>
 
 </html>

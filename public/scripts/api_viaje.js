@@ -1,8 +1,8 @@
 
-const getUsuarios = () => {
+const getViajes = () => {
     let response;
-    console.log("HOLAA");
-    fetch("http://tripnaryserver-env.eba-eqs8mgem.us-east-1.elasticbeanstalk.com/usuarioDef/", {
+    fetch("http://tripnaryserver-env.eba-eqs8mgem.us-east-1.elasticbeanstalk.com/viajeDef/", {
+        method: 'GET',
         mode: "cors",
         headers: {
             'Access-Control-Allow-Origin': '*',
@@ -16,28 +16,16 @@ const getUsuarios = () => {
         )
         .then(
             json => {
-
-
                 console.log(json);
             }
         )
 }
 
-const postUsuarios = () => {
-    
-    var data = {
-        correoElectronico : "gato1@gmail.com",
-        nombre : "Isa",
-        apellido1 : "Galeano",
-        apellido2 : "Hernandez",
-        contrasenna : "gato123",
-        telefono : "+50684511935",
-        estado : "inactivo"
-    }
+const postViaje = (viaje) => {
 
-    fetch("http://tripnaryserver-env.eba-eqs8mgem.us-east-1.elasticbeanstalk.com/usuarioDef/",{
+    fetch("http://tripnaryserver-env.eba-eqs8mgem.us-east-1.elasticbeanstalk.com/viajeDef/",{
         method: 'POST',
-        body: JSON.stringify(data),
+        body: JSON.stringify(viaje),
         headers: { 
             'Access-Control-Allow-Origin': '*',
             'Content-type': 'application/json' 
@@ -46,11 +34,11 @@ const postUsuarios = () => {
     .then(
         response => {
             if(response.ok) {
-                console.log('Usuario creado');
+                console.log('Viaje creado');
                 
 
             } else {
-                console.log('El usuario ya existe');
+                console.log('El viaje ya existe');
                 
             }
             
@@ -67,21 +55,11 @@ const postUsuarios = () => {
     )
 }
 
-const putUsuarios = () => {
-    
-    var data = {
-        correoElectronico : "gato1@gmail.com",
-        nombre : "Isa",
-        apellido1 : "Update",
-        apellido2 : "Hernandez",
-        contrasenna : "gato123",
-        telefono : "+50684511935",
-        estado : "inactivo"
-    }
+const putViaje = (viaje) => {
 
-    fetch("http://tripnaryserver-env.eba-eqs8mgem.us-east-1.elasticbeanstalk.com/usuarioDef/",{
+    fetch("http://tripnaryserver-env.eba-eqs8mgem.us-east-1.elasticbeanstalk.com/viajeDef/",{
         method: 'PUT',
-        body: JSON.stringify(data),
+        body: JSON.stringify(viaje),
         headers: { 
             'Access-Control-Allow-Origin': '*',
             'Content-type': 'application/json' 
@@ -90,11 +68,11 @@ const putUsuarios = () => {
     .then(
         response => {
             if(response.ok) {
-                console.log('Usuario actualizado');
+                console.log('Viaje actualizado');
                 
 
             } else {
-                console.log('El usuario no existe');
+                console.log('El viaje no existe');
                 
             }
             
@@ -111,8 +89,8 @@ const putUsuarios = () => {
     )
 }
 
-const getUsuarioByID = () => {
-    fetch(`http://tripnaryserver-env.eba-eqs8mgem.us-east-1.elasticbeanstalk.com/usuarioDef/${"gato1@gmail.com"}`, {
+const getViajeByID = (viaje) => {
+    fetch(`http://tripnaryserver-env.eba-eqs8mgem.us-east-1.elasticbeanstalk.com/viajeDef/${viaje}`, {
         mode: "cors",
         headers: {
             'Access-Control-Allow-Origin': '*',
@@ -122,11 +100,11 @@ const getUsuarioByID = () => {
     .then(
         response => {
             if(response.ok) {
-                console.log('Usuario encontrado');
+                console.log('Viaje encontrado');
                 
 
             } else {
-                console.log('El usuario no existe');
+                console.log('El viaje no existe');
                 
             }
             
@@ -144,9 +122,9 @@ const getUsuarioByID = () => {
         
 }
 
-const deleteUsuarios = () => {
+const deleteViaje = (viaje) => {
     
-    fetch(`http://tripnaryserver-env.eba-eqs8mgem.us-east-1.elasticbeanstalk.com/usuarioDef/${"gato1@gmail.com"}`,{
+    fetch(`http://tripnaryserver-env.eba-eqs8mgem.us-east-1.elasticbeanstalk.com/viajeDef/${viaje}`,{
         method: 'DELETE',
         headers: { 
             'Access-Control-Allow-Origin': '*',
@@ -156,11 +134,11 @@ const deleteUsuarios = () => {
     .then(
         response => {
             if(response.ok) {
-                console.log('Usuario eliminado');
+                console.log('Viaje eliminado');
                 
 
             } else {
-                console.log('El usuario no existe');
+                console.log('El viaje no existe');
                 
             }
             
@@ -179,8 +157,6 @@ const deleteUsuarios = () => {
      
 }
 
-
-
 document.addEventListener('DOMContentLoaded', function () {
-  deleteUsuarios();
+  deleteViaje();
 }, false);
