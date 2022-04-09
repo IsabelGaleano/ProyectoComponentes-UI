@@ -156,7 +156,12 @@
                             </a>
                         </li>
                         <li class="nav-item px-3 d-flex align-items-center">
-                           
+                            <!--Para tener la opcion de cerrar sesión-->
+                            <% if (typeof username != "undefined") { %>
+                                <a href="../pages/logout" class="btn btn-sm  bg-white  btn-round mb-0 me-1 mt-2 mt-md-0">Cerrar sesión</a>
+                                <% } else { %>
+                                  <a href="../pages/sign-in" class="btn btn-sm  bg-white  btn-round mb-0 me-1 mt-2 mt-md-0">Iniciar sesión</a>
+                                  <% } %>
                             
                         </li>
                         <li class="nav-item dropdown pe-2 d-flex align-items-center">
