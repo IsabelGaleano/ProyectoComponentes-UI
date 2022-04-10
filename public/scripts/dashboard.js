@@ -145,7 +145,7 @@ const registrarViaje = () => {
         fechaInicio: document.getElementById('fechaInicio').value,
         fechaFin: document.getElementById('fechaFin').value,
         destino: document.getElementById('destinoViaje').value,
-        idUsuario: document.getElementById('idUserHidden').value,
+        idUsuario: document.getElementById('idUserHidden').innerText.trim(),
         estado: "activo"
     }
 
@@ -192,7 +192,7 @@ const actualizarViaje = () => {
         fechaInicio: document.getElementById('fechaInicio').value,
         fechaFin: document.getElementById('fechaFin').value,
         destino: document.getElementById('destinoViaje').value,
-        idUsuario: document.getElementById('idUserHidden').innerText,
+        idUsuario: document.getElementById('idUserHidden').innerText.trim(),
         estado: "activo"
     }
 
