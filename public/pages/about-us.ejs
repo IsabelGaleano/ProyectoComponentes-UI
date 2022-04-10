@@ -38,8 +38,8 @@ Coded by www.creative-tim.com
   <!-- Navbar Transparent -->
   <nav class="navbar navbar-expand-lg position-absolute top-0 z-index-3 w-100 shadow-none my-3  navbar-transparent ">
     <div class="container">
-      <a class="navbar-brand  text-white " href="https://demos.creative-tim.com/soft-ui-design-system/presentation.html"
-        rel="tooltip" title="Designed and Coded by Creative Tim" data-placement="bottom" target="_blank">
+      <a class="navbar-brand  text-white " href="" rel="tooltip" title="Designed and Coded by Creative Tim"
+        data-placement="bottom">
         Tripnary
       </a>
       <button class="navbar-toggler shadow-none ms-2" type="button" data-bs-toggle="collapse"
@@ -61,10 +61,11 @@ Coded by www.creative-tim.com
             </a>
           </li>
           <li class="nav-item my-auto ms-3 ms-lg-0">
-            <% if (typeof username != "undefined") { %>
+            <% if (typeof username !="undefined" ) { %>
               <a href="../pages/logout" class="btn btn-sm  bg-white  btn-round mb-0 me-1 mt-2 mt-md-0">Cerrar sesión</a>
               <% } else { %>
-                <a href="../pages/sign-in" class="btn btn-sm  bg-white  btn-round mb-0 me-1 mt-2 mt-md-0">Iniciar sesión</a>
+                <a href="../pages/sign-in" class="btn btn-sm  bg-white  btn-round mb-0 me-1 mt-2 mt-md-0">Iniciar
+                  sesión</a>
                 <% } %>
 
           </li>
@@ -419,33 +420,15 @@ Coded by www.creative-tim.com
         </div>
         <div class="col-md-2 col-sm-6 col-6 mb-4">
           <div>
-            <h6 class="text-gradient text-footer text-sm">Trinary</h6>
-            <ul class="flex-column ms-n3 nav">
-              <li class="nav-item">
-                <a class="nav-link" href=".../../about-us.html" target="_blank">
-                  Sobre nosotros
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href=".../../about-us.html" target="_blank">
-                  Propiedades
-                </a>
-              </li>
-
-            </ul>
-          </div>
-        </div>
-        <div class="col-md-2 col-sm-6 col-6 mb-4">
-          <div>
             <h6 class="text-gradient text-footer text-sm">Recursos</h6>
             <ul class="flex-column ms-n3 nav">
               <li class="nav-item">
-                <a class="nav-link" href="https://iradesign.io/" target="_blank">
+                <a class="nav-link" href="../pages/sign-in">
                   Iniciar sesión
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="https://www.creative-tim.com/bits" target="_blank">
+                <a class="nav-link" href="../pages/sign-up">
                   Crear cuenta
                 </a>
               </li>

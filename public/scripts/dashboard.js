@@ -1,6 +1,6 @@
 let usuarioId;
 document.addEventListener('DOMContentLoaded', async () => {
-    usuarioId = document.getElementById('idUserHidden').innerText;
+    usuarioId = document.getElementById('idUserHidden').innerText.trim();
     console.log(usuarioId);
     await cargarViajes(usuarioId);
 
