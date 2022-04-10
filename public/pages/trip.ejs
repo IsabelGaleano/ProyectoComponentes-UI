@@ -43,8 +43,7 @@
         <div class="sidenav-header">
             <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none"
                 aria-hidden="true" id="iconSidenav"></i>
-            <a class="navbar-brand m-0" href="../pages/dashboard"
-                target="_blank">
+            <a class="navbar-brand m-0" href="../pages/dashboard" target="_blank">
                 <img src="../assets/assetsDashboard/img/tripnary_logos/Asset 3@2x.png" class="navbar-brand-img h-100"
                     alt="main_logo">
             </a>
@@ -158,11 +157,14 @@
                         </li>
                         <li class="nav-item px-3 d-flex align-items-center">
                             <!--Para tener la opcion de cerrar sesión-->
-              <% if (typeof username != "undefined") { %>
-                <a href="../pages/logout" class="btn btn-sm  bg-white  btn-round mb-0 me-1 mt-2 mt-md-0">Cerrar sesión</a>
-                <% } else { %>
-                  <a href="../pages/sign-in" class="btn btn-sm  bg-white  btn-round mb-0 me-1 mt-2 mt-md-0">Iniciar sesión</a>
-                  <% } %>
+                            <% if (typeof username !="undefined" ) { %>
+                                <a href="../pages/logout"
+                                    class="btn btn-sm  bg-white  btn-round mb-0 me-1 mt-2 mt-md-0">Cerrar sesión</a>
+                                <% } else { %>
+                                    <a href="../pages/sign-in"
+                                        class="btn btn-sm  bg-white  btn-round mb-0 me-1 mt-2 mt-md-0">Iniciar
+                                        sesión</a>
+                                    <% } %>
                         </li>
                         <li class="nav-item dropdown pe-2 d-flex align-items-center">
                             <a href="javascript:;" class="nav-link text-body p-0" id="dropdownMenuButton"
@@ -173,11 +175,11 @@
                                     <span class="d-sm-inline d-none">
                                         <%= name %>
                                     </span>
-                                 <% } else{ %>
-                                    <span class="d-sm-inline d-none">
-                                        No usuario 
-                                    </span>
-                                  <% } %>
+                                    <% } else{ %>
+                                        <span class="d-sm-inline d-none">
+                                            No usuario
+                                        </span>
+                                        <% } %>
                             </a>
                             <ul class="dropdown-menu  dropdown-menu-end  px-2 py-3 me-sm-n4"
                                 aria-labelledby="dropdownMenuButton">
@@ -284,11 +286,7 @@
                                         data-bs-toggle="modal" data-bs-target="#exampleModal">
                                         Agregar
                                     </button>
-                                    <button class="btn bg-gradient-dark btn-sm mb-0">Descargar</button>
-
-
                                 </div>
-
                             </div>
                         </div>
                         <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
@@ -412,8 +410,8 @@
                                                 </div>
                                             </div>
                                             <div class="row" id="listadoLugaresAct">
-                                                
-                                                
+
+
                                             </div>
 
 
@@ -422,9 +420,10 @@
 
                                     <!-- Modal footer -->
                                     <div class="modal-footer">
-                                        <button type="button" class="btn bg-gradient-dark"
-                                            data-bs-dismiss="modal" id="cerrarAct">Cerrar</button>
-                                        <button class="btn bg-gradient-primary" id="actualizarDiaLugar">Actualizar</button>
+                                        <button type="button" class="btn bg-gradient-dark" data-bs-dismiss="modal"
+                                            id="cerrarAct">Cerrar</button>
+                                        <button class="btn bg-gradient-primary"
+                                            id="actualizarDiaLugar">Actualizar</button>
                                     </div>
 
                                 </div>
@@ -486,16 +485,14 @@
                                 <script>
                                     document.write(new Date().getFullYear())
                                 </script>,
-                                <a href="https://www.creative-tim.com" class="font-weight-bold"
-                                    target="_blank">Tripnary</a>
+                                <a href="/" class="font-weight-bold" target="_blank">Tripnary</a>
                                 por un mejor futuro.
 
                             </div>
 
                         </div>
                         <div class="col-lg-6">
-                            <a href="https://www.creative-tim.com/presentation" class="nav-link text-muted"
-                                target="_blank">Nosotros</a>
+                            <a href="/" class="nav-link text-muted" target="_blank">Nosotros</a>
                         </div>
                     </div>
                 </div>
