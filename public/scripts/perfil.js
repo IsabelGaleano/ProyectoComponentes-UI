@@ -1,4 +1,5 @@
-var correo = document.getElementById('idUserHidden').innerText;
+var correo = document.getElementById('idUserHidden').innerText.trim();
+console.log(correo);
 const getUsuarioByID = () => {
     let numberPhoto = Math.floor(Math.random() * (15 - 1)) + 1;
     document.getElementById("imgPerfil").src = `../assets/assetsTripnary/img/imgTrips/${numberPhoto}.jpg`;
